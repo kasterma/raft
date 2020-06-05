@@ -1,0 +1,81 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: simple
+    filename: logging.log
+  testfile:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: simple
+    filename: test_logging.log
+  metricsfile:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: simple
+    filename: metrics.log
+loggers:
+  osocket:
+    level: INFO
+    handlers: [console]
+    propagate: false
+  raftnetwork:
+    level: INFO
+    handlers: [console]
+    propagate: false
+  raftserver:
+    level: DEBUG
+    handlers: [file, console]
+    propagate: false
+  isrunning:
+    level: INFO
+    handlers: [console]
+    propagate: false
+  filteringqueue:
+    level: INFO
+    handlers: [console]
+    propagate: false
+  raftlog:
+    level: INFO
+    handlers: [console]
+    propagate: false
+  follower:
+    level: INFO
+    handlers: [file, console]
+    propagate: false
+  leader:
+    level: DEBUG
+    handlers: [file, console]
+    propagate: false
+  candidate:
+    level: INFO
+    handlers: [file, console]
+    propagate: false
+  testlogger:
+    level: DEBUG
+    handlers: [file]
+    propagate: false
+  metrics:
+    level: DEBUG
+    handlers: [metricsfile]
+    propagate: false
+  client:
+    level: DEBUG
+    handlers: [file]
+    propagate: false
+  state:
+    level: INFO
+    handlers: [file]
+    propagate: false
+root:
+  level: DEBUG
+  handlers: [console]
